@@ -191,3 +191,31 @@ Matrix<bool> HungarianAlgorithm::execute(const Matrix<int>& matrix){
 
     return optimalAssignment;
 }
+
+int HungarianAlgorithm::getOptimalCost(const Matrix<int>& matrix, const Matrix<bool>& optimalAssignment){
+    size_t mRows = matrix.getRows();
+    size_t mCols = matrix.getColumns();
+
+    size_t oRows = optimalAssignment.getRows();
+	size_t oCols = optimalAssignment.getColumns();
+
+    if((mRows != mCols || mRows == 0 || mCols == 0) && (mRows != oRows || mCols != oCols)){
+        return 0;
+    }else{
+        if(mRows == 1 || mCols == 1){
+            return 1;
+        }
+    }
+
+    int optimalCost = 0;
+	for(size_t i = 0; i < mRows; ++i){
+		for(size_t j = 0; j < mCols; ++j){
+			if(optimalAssignment(i, j) == true){
+				optimalCost += matrix(i, j);
+			}
+		}
+	}
+
+	return optimalCost;
+}
+

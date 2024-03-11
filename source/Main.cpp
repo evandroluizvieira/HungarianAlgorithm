@@ -45,5 +45,10 @@ int main(){
     cout << "Optimal Assignment" << endl;
     cout << optimalAssignment << endl;
 
+    int optimalCost = HungarianAlgorithm::getOptimalCost(matrix, optimalAssignment);
+
+    cout << "Optimal Cost " << endl;
+    cout << optimalCost << endl;
+
     return 0;
 }
