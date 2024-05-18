@@ -15,6 +15,7 @@ git clone https://github.com/evandroluizvieira/HungarianAlgorithm.git
 ```
 
 ## Usage
+Example:
 ```c++
 #include "Matrix.hpp"
 #include "HungarianAlgorithm.hpp"
@@ -29,35 +30,52 @@ using std::endl;
  * to find the optimal assignment and its cost.
  */
 int main(){
-	//Define a cost matrix size 5x5
-	Matrix<int> matrix({
-		{39,  6, 54, 33, 17},
-		{40, 88, 96, 34, 73},
-		{57, 34, 32, 66, 30},
-		{22, 61, 93, 88, 78},
-		{76, 10, 78, 67, 21}
-	});
+    //Define a cost matrix
+    Matrix<int> matrix({
+	{39,  6, 54, 33, 17},
+	{40, 88, 96, 34, 73},
+	{57, 34, 32, 66, 30},
+	{22, 61, 93, 88, 78},
+	{76, 10, 78, 67, 21}
+    });
 
     //Display the input matrix
-    cout << "Matrix" << endl;
+    cout << "Matrix:" << endl;
     cout << matrix << endl;
 
     //Execute the Hungarian Algorithm
     Matrix<bool> optimalAssignment = HungarianAlgorithm::execute(matrix);
 
     //Display the optimal assignment matrix
-    cout << "Optimal Assignment" << endl;
+    cout << "Optimal Assignment:" << endl;
     cout << optimalAssignment << endl;
 
     //Calculate the optimal cost
     int optimalCost = HungarianAlgorithm::getOptimalCost(matrix, optimalAssignment);
 
     //Display the optimal cost
-    cout << "Optimal Cost " << endl;
+    cout << "Optimal Cost:" << endl;
     cout << optimalCost << endl;
 
     return 0;
 }
+```
+Output:
+```console
+Matrix:
+39  6 54 33 17 
+40 88 96 34 73 
+57 34 32 66 30 
+22 61 93 88 78 
+76 10 78 67 21 
 
+Optimal Assignment:
+0 1 0 0 0 
+0 0 0 1 0 
+0 0 1 0 0 
+1 0 0 0 0 
+0 0 0 0 1 
 
+Optimal Cost:
+115
 ```
